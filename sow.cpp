@@ -8,7 +8,7 @@
 using namespace std;
 
 int primes[26] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
-map <int, string> sow_hash;
+map <unsigned long long int, string> sow_hash;
 
 struct sowpods
 {
@@ -42,20 +42,26 @@ void create_key()
 		}
 	}
 }
-
 void insert()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		sow_hash[sow[i].num] = sow[i].word;
+		if(sow_hash[sow[i].num].size()!=0)	
+		{
+		
+			sow_hash[sow[i].num] = sow_hash[sow[i].num].append(sow[i].word);	
+			}
+		else
+		{
+			sow_hash[sow[i].num] = sow[i].word;	
+		
+		}
+		
 	}
 }
 void print()
 {
-	for (int i = 0; i < 10; i++)
-	{
-		cout<<sow[i].num<< " "<<sow_hash[sow[i].num]<<endl;
-	}
+	
 }
 
 int main()
